@@ -37,8 +37,10 @@ main = do
                 putStrLn "problems with parsing"
                 exitFailure
 
-    let dictionary = map rawEntryToDictionaryRecord entriesRaw
+    let dictionary :: [DictionaryRecord]
+        dictionary = map rawEntryToDictionaryRecord entriesRaw
 
     putStrLn $ "parsed " ++ show (length entriesRaw) ++ " records"
     putStrLn "printing first two records"
-    print $ take 2 dictionary
+    -- print $ take 2 dictionary -- this doesn't apply newilne after each record
+    mapM_ print $ take 2 dictionary
