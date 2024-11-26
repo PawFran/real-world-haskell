@@ -1,0 +1,1 @@
+DictionaryRecord {header = "cast\299go, cast\299g\257re, cast\299g\257v\299, cast\299g\257tum [verb] [I]", example = "(Ancillam miseram domina sev\275ra cast\299gat)", translations = ["1. kara\263","2. faubfuai"]}

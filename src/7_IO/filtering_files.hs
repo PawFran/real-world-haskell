@@ -1,4 +1,3 @@
-
-
-main :: IO () =  do
-                    interact (unlines . filter (elem 'f') . lines)
+main :: IO () 
+main =  do
+            interact (unlines . filter (elem 'f') . lines)

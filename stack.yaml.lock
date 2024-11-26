@@ -3,11 +3,38 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: directory-1.3.9.0@sha256:ae73d4c39d18842f57d48649f4583347823ef7b1bc0bde786ca39141f7fd8c87,3167
+    pantry-tree:
+      sha256: e8710b17eaf370c5ca0b650b37a2a2a0756af019043024a1442c078155a3ec9b
+      size: 3386
+  original:
+    hackage: directory-1.3.9.0
+- completed:
+    hackage: filepath-1.4.300.2@sha256:345cbb1afe414a09e47737e4d14cbd51891a734e67c0ef3d77a1439518bb81e8,5900
+    pantry-tree:
+      sha256: 2420f7addc917bf41970a8980f52abe431b1a0fb711b00795effbb289c8ea76c
+      size: 3998
+  original:
+    hackage: filepath-1.4.300.2
+- completed:
+    hackage: process-1.6.25.0@sha256:9a0b2ef8096517fa0e0c7a5e9a5c2ae5744ed824c3331005f9408245810df345,2640
+    pantry-tree:
+      sha256: 9c7927cd4d7f2f4c64251256eb6904800b3922fa5c5424c60f0e08441693e12b
+      size: 1790
+  original:
+    hackage: process-1.6.25.0
+- completed:
+    hackage: unix-2.8.5.1@sha256:3f702a252a313a7bcb56e3908a14e7f9f1b40e41b7bdc8ae8a9605a1a8686f06,9808
+    pantry-tree:
+      sha256: b961320db69795a16c4ef4eebb0a3e7ddbbbe506fa1e22dde95ee8d8501bfbe5
+      size: 5821
+  original:
+    hackage: unix-2.8.5.1
 snapshots:
 - completed:
-    sha256: 795b7a893148a42f09956611a0fa1139293fe6ef934d053468d8e53e3e013390
-    size: 719577
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/30.yaml
-  original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/30.yaml
+    sha256: 31ec86ffd80006e42b2014d9458dacc1c04a03168be8def03d2ca705db1221b8
+    size: 664618
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2024/9/30.yaml
+  original: nightly-2024-09-30

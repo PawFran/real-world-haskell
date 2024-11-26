@@ -18,7 +18,7 @@ main =  do
         outputHandle <- openFile "output.txt" WriteMode
         --    hSetEncoding inputHandle utf8
 
-        inputStr <- hGetContents inputHandle
+        inputStr <- hGetContents inputHandle -- hGetContents is lazy so file size is not a problem 
         let result = procesData inputStr
 
         hPutStr outputHandle result
