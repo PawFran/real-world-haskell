@@ -23,7 +23,7 @@ dependencies:
 - base >= 4.7 && < 5
 - split
 - with-utf8
-- regex-posix
+- regex-tdfa
 
 ghc-options:
 - -Wall

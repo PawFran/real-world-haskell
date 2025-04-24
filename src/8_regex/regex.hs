@@ -1,4 +1,4 @@
-import Text.Regex.Posix
+import Text.Regex.TDFA
 
 main :: IO ()
 main = do
@@ -15,9 +15,12 @@ main = do
     print $ ("I, B. Ionsonii, uurit a lift'd batch" =~ "(uu|ii)" :: String) == "ii"
     print $ ("hi ludi, F. Baconis nati, tuiti orbi" =~ "Shakespeare" :: String) == ""
 
-    -- for [String] it returns all matching strings
-    print $ ("I, B. Ionsonii, uurit a lift'd batch" =~ "(uu|ii)" :: [String]) == ["ii","uu"]
-    print $ ("hi ludi, F. Baconis nati, tuiti orbi" =~ "Shakespeare" :: [String]) == []
+    -- for some types like [String] one has to use AllTextMatches and unwrap it using 'let'
+    let AllTextMatches substrings = "I, B. Ionsonii, uurit a lift'd batch" =~ "(uu|ii)" :: AllTextMatches [] String
+    print (substrings == ["ii", "uu"])
+    
+    let AllTextMatches substrings2 = "hi ludi, F. Baconis nati, tuiti orbi" =~ "Shakespeare" :: AllTextMatches [] String
+    print (substrings2 == [])
 
     let pat = "(foo[a-z]*bar|quux)"
 
@@ -26,14 +29,18 @@ main = do
     print $ ("no match here" =~ pat :: (String,String,String)) == ("no match here", "", "")
 
     -- fourth is list of all groups
-    print $ ("before foodiebar after" =~ pat :: (String,String,String,[String])) == ("before ","foodiebar"," after",["foodiebar"])
+    print $ ("123-45-6789" =~ "([0-9]{3})-([0-9]{2})-([0-9]{4})" :: (String, String, String, [String])) == ("", "123-45-6789", "", ["123", "45", "6789"])
 
     -- starting offset and its length
     print $ ("before foodiebar after" =~ pat :: (Int,Int)) == (7, 9)
-    -- all such matches
-    print $ ("i foobarbar a quux" =~ pat :: [(Int,Int)]) == [(2,9),(14,4)]
-    print $ ("eleemosynary" =~ pat :: (Int,Int)) == (1, 0)
-    print $ ("mondegreen" =~ pat :: [(Int,Int)]) == []
+    print $ ("eleemosynary" =~ pat :: (Int,Int)) == (-1, 0)
 
-    -- POSIX regex style is greedy
+    -- all such matches
+    let AllMatches offsetLength = "i foobarbar a quux" =~ pat :: AllMatches [] (MatchOffset, MatchLength)
+    print $ (offsetLength == [(2,9),(14,4)])
+    
+    let AllMatches offsetLength2 = "mondegreen" =~ pat :: AllMatches [] (MatchOffset, MatchLength)
+    print $ (offsetLength2 == [])
+
+    -- greedy
     print $ ("foooooo" =~ ("foo|fo*")) == "foooooo"
